@@ -1,7 +1,7 @@
 import ErrorHandler from '../utils/ErrorHandler.js'
 
 
-export const isAuthenticate = (req, res, next) => {
+export const isAuthenticated = (req, res, next) => {
     const token = req.cookies["connect.sid"];
     if (!token) {
         return next(new ErrorHandler("Not logged in", 401))
@@ -10,7 +10,7 @@ export const isAuthenticate = (req, res, next) => {
 }
 
 
-export const AuthorizeAdmin = (req, res, next) => {
+export const authorizeAdmin = (req, res, next) => {
     if (req.user.role!=="admin") {
         return next(new ErrorHandler("Only Admin Allowed", 405))
     }
