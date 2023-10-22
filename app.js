@@ -12,6 +12,7 @@ const app = express();
 export default app;
 
 //define the path of the config file
+
 dotenv.config({
     path: "./config/config.env"
 })
@@ -25,14 +26,19 @@ app.use(
         saveUninitialized: false,
         //we provide name of the cookie here  [actually this is for cookies]
 
+        // cookie: {
+        //     secure: process.env.NODE_ENV === "development" ? false : true,
+        //     httpOnly: process.env.NODE_ENV === "development" ? false : true,
+        //     sameSite: process.env.NODE_ENV === "development" ? false : "none",
+        // },
         cookie: {
-            secure: process.env.NODE_ENV === "development" ? false : true,
-            httpOnly: process.env.NODE_ENV === "development" ? false : true,
-            sameSite: process.env.NODE_ENV === "development" ? false : "none",
+            secure: false,
+            httpOnly: false,
+            sameSite: false,
         },
     })
 );
-
+console.log(process.env.NODE_ENV);
 //now connect session and google auth
 
 app.use(cookieParser());

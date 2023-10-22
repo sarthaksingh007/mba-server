@@ -11,6 +11,7 @@ export const instance = new Razorpay({
 })
 
 
+// console.log(process.env.NODE_ENV);
 
 app.get('/', (req, res, next) => {
     res.send("<h1>Working</h1>")
