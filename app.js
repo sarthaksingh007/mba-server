@@ -21,21 +21,22 @@ dotenv.config({
 
 app.use(
     session({
+        name: 'connect.sid',
         secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
         //we provide name of the cookie here  [actually this is for cookies]
 
-        // cookie: {
-        //     secure: process.env.NODE_ENV === "development" ? false : true,
-        //     httpOnly: process.env.NODE_ENV === "development" ? false : true,
-        //     sameSite: process.env.NODE_ENV === "development" ? false : "none",
-        // },
         cookie: {
-            secure: false,
-            httpOnly: false,
-            sameSite: false,
+            secure: process.env.NODE_ENV === "development" ? false : true,
+            httpOnly: process.env.NODE_ENV === "development" ? false : true,
+            sameSite: process.env.NODE_ENV === "development" ? false : "none",
         },
+        // cookie: {
+        //     secure: false,
+        //     httpOnly: false,
+        //     sameSite: false,
+        // },
     })
 );
 console.log(process.env.NODE_ENV);
