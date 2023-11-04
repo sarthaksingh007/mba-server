@@ -1,6 +1,6 @@
 import express from 'express'
 import { authorizeAdmin, isAuthenticated } from '../middleware/auth.js';
-import { getAdminOrders, getMyorders, getOrderDetails, paymentVerification, placeOrder, placeOrderOnline, processOrder } from '../controllers/order.js';
+import { getAdminOrders, getMyOrders, getOrderDetails, paymentVerification, placeOrder, placeOrderOnline, processOrder } from '../controllers/order.js';
 
 const router = express.Router();
 
@@ -12,7 +12,7 @@ router.post("/createorderonline", isAuthenticated, placeOrderOnline)
 
 router.post("/paymentverification", isAuthenticated, paymentVerification)
 
-router.get("/myorders", isAuthenticated, getMyorders)
+router.get("/myorders", isAuthenticated, getMyOrders)
 
 
 router.get("/order/:id", isAuthenticated, getOrderDetails)

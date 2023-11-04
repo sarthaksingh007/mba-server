@@ -1,4 +1,4 @@
-import { asyncError } from "../middlewares/errorMiddleware.js";
+import { asyncError } from "../middleware/errorMiddleware.js";
 import { Order } from "../models/Order.js";
 import { Payment } from "../models/Payment.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
@@ -143,6 +143,8 @@ export const getAdminOrders = asyncError(async (req, res, next) => {
     orders,
   });
 });
+
+
 export const processOrder = asyncError(async (req, res, next) => {
   const order = await Order.findById(req.params.id);
 
