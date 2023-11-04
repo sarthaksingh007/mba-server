@@ -18,7 +18,7 @@ const schema = new mongoose.Schema({
             type: String,
             required: true,
         },
-        pinCode: {
+        pincode: {
             type: Number,
             required: true,
         },
@@ -39,7 +39,7 @@ const schema = new mongoose.Schema({
                 required: true,
             },
         },
-        VegCheeseBurger: {
+        vegCheeseBurger: {
             price: {
                 type: Number,
                 required: true,
