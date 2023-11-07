@@ -36,7 +36,7 @@ export const GetAdminUsers=asyncError(async(req,res,next)=>{
 
 export const GetAdminStats  =asyncError(async(req,res,next)=>{
 
-    const userCount=await User.countDocuments();
+    const usersCount=await User.countDocuments();
 
     const orders=await Order.find({});
 
@@ -52,7 +52,7 @@ export const GetAdminStats  =asyncError(async(req,res,next)=>{
 
     res.status(200).json({
         success:true,
-        userCount,
+        usersCount,
         totalIncome,
         ordersCount:{
             total:orders.length,
