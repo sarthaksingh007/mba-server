@@ -59,6 +59,15 @@ app.use(
     })
 )
 
+
+
+app.use(passport.authenticate("session"))
+app.use(passport.initialize());
+app.use(passport.session());
+app.enable("trust proxy");
+connectPassport();
+
+//Importing Routes
 app.post('/api/v1/contactform', async (req, res) => {
     try {
       const contact = new Message(req.body);
@@ -69,15 +78,7 @@ app.post('/api/v1/contactform', async (req, res) => {
       res.status(500).send({ error: 'Internal Server Error' });
     }
   });
-
-app.use(passport.authenticate("session"))
-app.use(passport.initialize());
-app.use(passport.session());
-app.enable("trust proxy");
-connectPassport();
-
-//Importing Routes
-
+  
 import userRoute from "./routes/user.js"
 import orderRoute from "./routes/order.js"
 
