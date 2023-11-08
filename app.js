@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 import passport from 'passport';
 import { errorMiddleware } from './middleware/errorMiddleware.js'
 import cors from "cors"
+import { Message } from './models/Message.js'
 
 const app = express();
 
@@ -57,6 +58,17 @@ app.use(
         methods: ["GET", "POST", "PUT", "DELETE"],
     })
 )
+
+app.post('/api/v1/contactform', async (req, res) => {
+    try {
+      const contact = new Message(req.body);
+      await contact.save();
+      res.status(200).send({ message: 'Success', contact });
+    } catch (error) {
+      console.error('Error saving contact:', error);
+      res.status(500).send({ error: 'Internal Server Error' });
+    }
+  });
 
 app.use(passport.authenticate("session"))
 app.use(passport.initialize());
