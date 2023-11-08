@@ -17,4 +17,4 @@ const schema = new mongoose.Schema({
 });
 
 
-export const Message = mongoose.model("ContactFromDetails",schema);
+export const Message = mongoose.model("ContactFormDetails",schema);
